@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.black{
+			background-color: black;
+		}
+		.red{
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<table border="1px">
+		<tr>
+			<th></th>
+			<th>08:30-09:30</th>
+			<th>09:30-10:30</th>
+			<th>10:30-11:30</th>
+			<th>11:30-12:30</th>
+			<th>12:30-13:30</th>
+			<th>13:30-14:30</th>
+			<th>14:30-15:30</th>
+			<th>15:30-16:30</th>
+			<th>16:30-17:30</th>
+		</tr>
+		<tr>
+			<th>Sunday</th>
+			<td id="Sun08"></td>
+			<td id="Sun09"></td>
+			<td id="Sun10"></td>
+			<td id="Sun11"></td>
+			<td id="Sun12"></td>
+			<td id="Sun13"></td>
+			<td id="Sun14"></td>
+			<td id="Sun15"></td>
+			<td id="Sun16"></td>
+		</tr>
+		<tr>
+			<th>Monday</th>
+			<td id="Mon08"></td>
+			<td id="Mon09"></td>
+			<td id="Mon10"></td>
+			<td id="Mon11"></td>
+			<td id="Mon12"></td>
+			<td id="Mon13"></td>
+			<td id="Mon14"></td>
+			<td id="Mon15"></td>
+			<td id="Mon16"></td>
+		</tr>		
+		<tr>
+			<th>Tuesday</th>
+			<td id="Tue08"></td>
+			<td id="Tue09"></td>
+			<td id="Tue10"></td>
+			<td id="Tue11"></td>
+			<td id="Tue12"></td>
+			<td id="Tue13"></td>
+			<td id="Tue14"></td>
+			<td id="Tue15"></td>
+			<td id="Tue16"></td>
+		</tr>
+		<tr>
+			<th>Wednesday</th>
+			<td id="Wed08"></td>
+			<td id="Wed09"></td>
+			<td id="Wed10"></td>
+			<td id="Wed11"></td>
+			<td id="Wed12"></td>
+			<td id="Wed13"></td>
+			<td id="Wed14"></td>
+			<td id="Wed15"></td>
+			<td id="Wed16"></td>
+		</tr>
+		<tr>
+			<th>Thursday</th>
+			<td id="Thu08"></td>
+			<td id="Thu09"></td>
+			<td id="Thu10"></td>
+			<td id="Thu11"></td>
+			<td id="Thu12"></td>
+			<td id="Thu13"></td>
+			<td id="Thu14"></td>
+			<td id="Thu15"></td>
+			<td id="Thu16"></td>
+		</tr>
+	</table>
+
+	<br><br>
+
+	<textarea id="input"></textarea><br>
+	<button onclick="acceptInput()">Go!</button>
+
+	<br><br>
+
+	<button onclick="appendInput('Sun08;Sun09;Sun10;Sun11;Mon08;Mon09;Mon14;Mon15;Mon16;Tue08;Tue09;Tue13;Tue14;Wed14;Wed15;Thu12;Thu13;Thu14;Thu15;')">Vedant</button>
+	<button onclick="appendInput('Sun12;Sun13;Mon12;Mon13;Tue08;Tue12;Tue13;Wed10;Wed11;Wed14;Wed15;Thu!')">Hamna</button>
+	<button onclick="appendInput('Sun08;Sun09;Sun12;Sun13;Sun15;Sun16;Mon10;Mon11;Wed08;Wed09;Wed10;Wed11;Wed14;Wed15;Thu!')">Sidra</button>
+	<button onclick="appendInput('Sun!Mon12;Tue10;Tue11;Wed11;Wed14;Wed15;Thu10;Thu11;Thu12;Thu13;Thu15;Thu16;')">Asiyeh</button>
+	<button onclick="appendInput('Sun10;Sun11;Sun15;Sun16;Mon08;Mon09;Mon12;Mon15;Mon16;Tue08;Tue09;Tue10;Tue11;Tue12;Tue13;Wed!Thu08;Thu09;Thu14;Thu15;')">Chirag</button>
+	<button onclick="appendInput('Sun15;Sun16;Mon08;Mon09;Mon12;Mon13;Mon14;Mon15;Tue08;Tue09;Tue14;Wed08;Wed09;Wed14;Wed15;Thu10;Thu11;Thu14;Thu15;')">Alphin</button>
+	<button onclick="appendInput('Sun11;Sun12;Mon08;Mon09;Tue!Wed10;Wed11;Thu12;Thu13;Thu15;Thu16;')">Daniel</button>
+	<br>
+	<button onclick="clearInput()">Clear</button>
+
+	<script type="text/javascript">
+		function acceptInput()
+		{
+			var input = document.getElementById("input").value;
+			var shortenedinput = "";
+
+			for (var i=0; i<input.length; i++)
+			{
+				if (input[i] == ";")		//Has class
+				{
+					document.getElementById(shortenedinput).className = "black";
+					shortenedinput = "";
+				}
+				else if (input[i] == "!")	//Has Day off
+				{
+					if (document.getElementById(shortenedinput+"08").className != "black")
+						document.getElementById(shortenedinput+"08").className = "red";
+					if (document.getElementById(shortenedinput+"09").className != "black")
+						document.getElementById(shortenedinput+"09").className = "red";
+					if (document.getElementById(shortenedinput+"10").className != "black")
+						document.getElementById(shortenedinput+"10").className = "red";
+					if (document.getElementById(shortenedinput+"11").className != "black")
+						document.getElementById(shortenedinput+"11").className = "red";
+					if (document.getElementById(shortenedinput+"12").className != "black")
+						document.getElementById(shortenedinput+"12").className = "red";
+					if (document.getElementById(shortenedinput+"13").className != "black")
+						document.getElementById(shortenedinput+"13").className = "red";
+					if (document.getElementById(shortenedinput+"14").className != "black")
+						document.getElementById(shortenedinput+"14").className = "red";
+					if (document.getElementById(shortenedinput+"15").className != "black")
+						document.getElementById(shortenedinput+"15").className = "red";
+					if (document.getElementById(shortenedinput+"16").className != "black")
+						document.getElementById(shortenedinput+"16").className = "red";
+
+					shortenedinput = "";
+				}
+				else
+				{
+					shortenedinput += input[i];
+				}
+			}
+		}
+
+		function appendInput(str)
+		{
+			document.getElementById("input").value += str;
+		}
+
+		function clearInput()
+		{
+			document.getElementById("input").value = "";
+		}
+	</script>
+</body>
+</html>
